@@ -25,16 +25,12 @@ function App() {
     setTodoList([...todoList, newTodo]); 
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-  // }, [todoList]);
-
   return (
-    <div>
+    <>
       <h1>Todo App</h1>
       <AddTodoForm onAddTodo={addTodo} />
       <TodoList todoList={todoList} />
-    </div>
+    </>
   );
 }
 
