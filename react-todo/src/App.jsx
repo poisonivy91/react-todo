@@ -5,6 +5,11 @@ import TodoList from "./TodoList";
 function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const removeTodo = (id) => {
+    const updatedTodoList = todoList.filter((todo) => todo.id !== id);
+    setTodoList(updatedTodoList);
+  };
+  
 
   // Async Fetching
   React.useEffect(() => {
@@ -47,7 +52,7 @@ function App() {
         <>
           <h1>Todo App</h1>
           <AddTodoForm onAddTodo={addTodo} />
-          <TodoList todoList={todoList} />
+          <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
         </>
       )}
     </>
