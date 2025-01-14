@@ -3,12 +3,27 @@ import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 
 function App() {
-  const [todoList, setTodoList] = React.useState(() => {
-    const savedTodoList = localStorage.getItem("savedTodoList");
-    return savedTodoList ? JSON.parse(savedTodoList) : [];
-  });
+  const [todoList, setTodoList] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  const [isLoading, setIsLoading] = React.useState(false);
+  // Simulate async fetch and load initial data
+  React.useEffect(() => {
+    const fetchData = new Promise((resolve) => {
+      setTimeout(() => {
+        const savedTodoList = localStorage.getItem("savedTodoList");
+        resolve({
+          data: {
+            todoList: savedTodoList ? JSON.parse(savedTodoList) : [],
+          },
+        });
+      }, 2000);
+    });
+
+    fetchData.then((result) => {
+      setTodoList(result.data.todoList);
+      setIsLoading(false); // Stop loading after fetching
+    });
+  }, []);
 
   // Save todoList to localStorage
   React.useEffect(() => {
