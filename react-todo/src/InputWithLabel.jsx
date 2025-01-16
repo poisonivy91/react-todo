@@ -7,7 +7,7 @@ function InputWithLabel({ id, value, type = "text", onInputChange, children }) {
     useEffect(() => {
         if (inputRef.current)
         inputRef.current.focus();
-    }, []);
+    }); // removed the dependency to continoulsy run
 
     return (
         <>

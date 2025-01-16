@@ -5,31 +5,23 @@ import TodoList from "./TodoList";
 function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const removeTodo = (id) => {
-    const updatedTodoList = todoList.filter((todo) => todo.id !== id);
-    setTodoList(updatedTodoList);
-  };
-  
 
-  // Async Fetching
+  // Simulate async fetch and load initial data
   React.useEffect(() => {
     const fetchData = new Promise((resolve) => {
       setTimeout(() => {
+        const savedTodoList = localStorage.getItem("savedTodoList");
         resolve({
           data: {
-            todoList: [
-              { id: 1, title: "Brainstorm ideas for to-do app" },
-              { id: 2, title: "Create a list" },
-              { id: 3, title: "Complete assignment" },
-            ],
+            todoList: savedTodoList ? JSON.parse(savedTodoList) : [],
           },
         });
       }, 2000);
     });
 
     fetchData.then((result) => {
-      setTodoList(result.data.todoList); // Update todoList state with fetched data
-      setIsLoading(false); // Stop loading
+      setTodoList(result.data.todoList);
+      setIsLoading(false); // Stop loading after fetching
     });
   }, []);
 
@@ -42,6 +34,11 @@ function App() {
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
+  };
+
+  const removeTodo = (id) => {
+    const updatedTodoList = todoList.filter((todo) => todo.id !== id);
+    setTodoList(updatedTodoList);
   };
 
   return (
@@ -60,7 +57,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
