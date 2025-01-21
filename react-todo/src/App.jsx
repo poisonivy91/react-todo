@@ -38,20 +38,48 @@ function App() {
     fetchData();
   }, []);
 
-  // Your rendering logic here...
-    return (
-      <div>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <ul>
-            {todoList.map((todo) => (
-              <li key={todo.id}>{todo.title}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
+  React.useEffect(() => {
+    if(isLoading) {
+      localStorage.setItem('todoList', JSON.stringify(todoList));
+    }
+  }, [todoList, isLoading]);
+
+  const addtodo = (newTodo) => {
+    setTodoList([...todoList, newTodo]);
+  };
+
+  const removetodo = (id) => {
+    setTodoList(todoList.filter((todo) => todo.id !== id));
+  };
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              {isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <>
+                  <h1>To Do App</h1>
+                  <AddTodoForm onAddTodo={addtodo} />
+                  <TodoList todoList={todoList} onRemoveTodo={removetodo} />
+                </>
+              )}
+            </>
+          }
+        />
+        <Route
+        path="/new"
+        element={
+          <h1>New To Do List</h1>
+        }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 
