@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
+import styles from './App.module.css';
 
 function App() {
   const [todoList, setTodoList] = React.useState([]);
@@ -47,7 +48,7 @@ function App() {
     }
   }, [todoList, isLoading]);
 
-  const addtodo = (newTodo) => {
+  const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
   };
 
@@ -58,6 +59,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <div className='{styles.Container}'>
       <Routes>
         <Route
           path="/"
@@ -68,7 +70,7 @@ function App() {
               ) : (
                 <>
                   <h1>To Do App</h1>
-                  <AddTodoForm onAddTodo={addtodo} />
+                  <AddTodoForm onAddTodo={addTodo} />
                   <TodoList todoList={todoList} onRemoveTodo={removetodo} />
                 </>
               )}
@@ -82,6 +84,7 @@ function App() {
         }
         />
       </Routes>
+      </div>
     </BrowserRouter>
   );
 }
