@@ -1,4 +1,7 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AddTodoForm from './AddTodoForm';
+import TodoList from './TodoList';
 
 function App() {
   const [todoList, setTodoList] = React.useState([]);
@@ -40,7 +43,7 @@ function App() {
 
   React.useEffect(() => {
     if(isLoading) {
-      localStorage.setItem('todoList', JSON.stringify(todoList));
+      localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
   }, [todoList, isLoading]);
 
@@ -49,6 +52,7 @@ function App() {
   };
 
   const removetodo = (id) => {
+    const updatedTodoList = todoList.filter((todo) => todo.id !== id);
     setTodoList(todoList.filter((todo) => todo.id !== id));
   };
 
