@@ -43,7 +43,7 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    if(isLoading) {
+    if (!isLoading) {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
   }, [todoList, isLoading]);
