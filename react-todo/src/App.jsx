@@ -42,7 +42,7 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    if(isLoading) {
+    if(!isLoading) {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
   }, [todoList, isLoading]);
@@ -52,7 +52,6 @@ function App() {
   };
 
   const removetodo = (id) => {
-    const updatedTodoList = todoList.filter((todo) => todo.id !== id);
     setTodoList(todoList.filter((todo) => todo.id !== id));
   };
 
