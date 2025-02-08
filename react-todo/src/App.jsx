@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AddTodoForm from './AddTodoForm';
-import TodoList from './TodoList';
-import styles from './App.module.css';
+import AddTodoForm from './components/AddTodoForm';
+import TodoList from './components/TodoList';
+import styles from './components/App.module.css';
 
 function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  
 
   const fetchData = async () => {
     console.log("Table name:", import.meta.env.VITE_TABLE_NAME);
@@ -26,10 +27,14 @@ function App() {
       }
 
       const data = await response.json();
+      console.log("Fetched Data:", data)
+
       const todos = data.records.map((record) => ({
         title: record.fields.title,
         id: record.id,
       }));
+
+      console.log("Processed Todos:", todos);
 
       setTodoList(todos);
       setIsLoading(false);
@@ -59,7 +64,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div className='{styles.Container}'>
+    <div className={styles.Container}>
       <Routes>
         <Route
           path="/"
