@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AddTodoForm from './AddTodoForm';
 import TodoList from './components/TodoList';
 import styles from './App.module.css';
+
 
 function App() {
   const [todoList, setTodoList] = React.useState([]);
@@ -41,6 +43,7 @@ function App() {
   React.useEffect(() => {
     fetchData();
   }, []);
+
 
   React.useEffect(() => {
     if (!isLoading) {
@@ -87,7 +90,7 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
+
 
 
 export default App;
