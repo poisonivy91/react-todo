@@ -1,0 +1,114 @@
+body {
+    background: url('/OIG (2) - Copy.jpg')  center center fixed;
+    background-size: contain; 
+    color: #c2b9b9; /* Text color for readability */
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    z-index: -1; 
+  }
+  
+  
+  h1, h2, h3 {
+    font-family: 'Creepster', cursive; /* Horror font */
+    color: #bedd0c; /* Blood red */
+    text-shadow: 2px 2px 10px #000000;
+  }
+  
+  .Container {
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background for better contrast */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%; /* Make it responsive */
+    box-shadow: 0 0 15px rgba(179, 5, 5, 0.8);
+  }
+  
+  
+  input {
+    width: calc(100% - 110px); /* Adjust input width relative to button */
+    border: 1px solid #555;
+    background: #222;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  button {
+    background: #67911a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #c3cf16;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background: #333; /* Darker background for the list items */
+    color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  li button {
+    background: #e02e2e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  
+  li button:hover {
+    background: #cc0000;
+  }
+  
+  @media (max-width: 768px) {
+    .Container {
+      width: 95%;
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 1.8rem;
+    }
+  
+    input {
+      width: calc(100% - 100px);
+    }
+  }
+  
