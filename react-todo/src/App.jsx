@@ -131,7 +131,8 @@ function App() {
       createdTime: new Date().toISOString(),
     }];
 
-    // Sort after adding the new item
+    // Added sorting, searching, and pagination improvements
+
     updatedTodoList.sort((a, b) => {
       return sortOrder === "asc"
         ? new Date(a.createdTime) - new Date(b.createdTime)
