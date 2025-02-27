@@ -7,7 +7,10 @@ import styles from './components/App.module.css';
 
 
 function App() {
-  const [todoList, setTodoList] = React.useState([]);
+  const [todoList, setTodoList] = React.useState(() => {
+    const savedTodos = localStorage.getItem('savedTodoList');
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
   const [isLoading, setIsLoading] = React.useState(true);
   
 
@@ -46,15 +49,21 @@ function App() {
   };
 
   React.useEffect(() => {
-    fetchData();
+    const savedTodos = localStorage.getItem("savedTodoList");
+  
+    if (!savedTodos) {
+      fetchData();
+    } else {
+      setTodoList(JSON.parse(savedTodos));
+      setIsLoading(false);
+    }
   }, []);
 
-
   React.useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && todoList.length > 0) {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
-  }, [todoList, isLoading]);
+  }, [todoList]);
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
@@ -62,7 +71,7 @@ function App() {
 
   const removetodo = (id) => {
     const updatedTodoList = todoList.filter((todo) => todo.id !== id);
-    setTodoList(todoList.filter((todo) => todo.id !== id));
+    setTodoList(updatedTodoList);
   };
 
   return (
@@ -77,7 +86,7 @@ function App() {
                 <p>Loading...</p>
               ) : (
                 <>
-                  <h1>To Do App</h1>
+                  <h1>Cosmic Obligations</h1>
                   <AddTodoForm onAddTodo={addTodo} />
                   <TodoList todoList={todoList} onRemoveTodo={removetodo} />
                 </>

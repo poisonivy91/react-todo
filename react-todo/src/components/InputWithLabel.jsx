@@ -31,4 +31,4 @@ InputWithLabel.propTypes = {
     children: PropTypes.node,
 };
 
-export default InputWithLabel
+export default InputWithLabel;
