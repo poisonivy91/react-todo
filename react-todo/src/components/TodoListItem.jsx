@@ -20,16 +20,12 @@ function TodoListItem({ todo, onRemoveTodo }) {
 TodoListItem.propTypes = {
     todo: PropTypes.shape({
 
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      title: PropTypes.string.isRequired,
     }).isRequired,
     onRemoveTodo: PropTypes.func.isRequired,
-
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  onRemoveTodo: PropTypes.func.isRequired,
-
-};
+  };
+;
 
 export default TodoListItem;
+

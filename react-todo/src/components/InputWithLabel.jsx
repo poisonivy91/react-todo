@@ -34,4 +34,4 @@ InputWithLabel.propTypes = {
 
 };
 
-export default InputWithLabel
+export default InputWithLabel;
