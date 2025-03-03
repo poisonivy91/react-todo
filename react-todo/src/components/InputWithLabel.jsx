@@ -26,9 +26,12 @@ function InputWithLabel({ id, value, type = "text", onInputChange, children }) {
 InputWithLabel.propTypes = {
     id: PropTypes.string.isRequired, 
     value: PropTypes.string.isRequired,
-    onInputChange: PropTypes.func.isRequired,
+    onInputChange: PropTypes.func.isRequried 
     type: PropTypes.string,
     children: PropTypes.node,
+
+    type: PropTypes.string, 
+
 };
 
 export default InputWithLabel;
