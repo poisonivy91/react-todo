@@ -14,12 +14,10 @@ function TodoList({ todoList, onRemoveTodo }) {
 
 TodoList.propTypes = {
   todoList: PropTypes.arrayOf(
-      PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          title: PropTypes.string.isRequired,
-      })
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      title: PropTypes.string.isRequired,
+    })
   ).isRequired,
   onRemoveTodo: PropTypes.func.isRequired,
 };
-
-export default TodoList;
