@@ -1,0 +1,32 @@
+.ListItem {
+    background: #1a1a2e;
+    color: #e7d7d7;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease, background 0.3s ease;
+  }
+  
+  .ListItem:hover {
+    background: #2a2a3e;
+    transform: scale(1.05);
+  }
+  
+  .DeleteButton {
+    background: #17bb24;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .DeleteButton:hover {
+    background: #cc0000;
+  }
+  
